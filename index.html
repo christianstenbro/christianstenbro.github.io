@@ -1,90 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Christian Stenbro Music</title>
-    <style>
-        body {
-            background-color: ghostwhite;
-        }
-        .content {
-            margin-left: 40px; /* Moves everything to the right */
-        }
-        h1 {
-            color: blue;
-            font-weight: bold;
-        }
-        .bottom-one {
-            padding-bottom: 0.5cm;
-        }
-        footer {
-        text-align: center; /* Centers the text */
-        position: fixed; /* Makes it stick to the bottom */
-        bottom: 5px; /* Moves it closer to the bottom */
-        left: 0;
-        width: 100%; /* Ensures it spans the full width */
-        font-size: 12px; /* Smaller text size */
-        }
-        
-        footer p {
-            display: inline; /* Keeps items on the same line */
-            margin-right: 15px; /* Adds space between items */
-        }
-        
-        footer a {
-            color: black;
-            text-decoration: none;
-        }
-        
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Christian Stenbro Music</title>
+  <style>
+    body { background-color: ghostwhite; margin: 0; }
+    .content { margin-left: 40px; }
+    h1 { color: blue; font-weight: bold; }
+    .bottom-one { padding-bottom: 0.5cm; }
+    footer {
+      text-align: center;
+      position: fixed;
+      bottom: 5px;
+      left: 0;
+      width: 100%;
+      font-size: 12px;
+    }
+    footer p { display: inline; margin-right: 15px; }
+    footer a { color: black; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ---- floating draggable image (improved) ---- */
+    #floatingImage {
+      position: fixed;             /* fixed so it stays relative to viewport */
+      top: 0; left: 0;             /* we'll offset by transform */
+      width: 150px;
+      z-index: 1000;
+      cursor: grab;
+      user-select: none;
+      touch-action: none;          /* prevent scrolling while dragging */
+      will-change: transform;      /* hint for optimization */
+      -webkit-tap-highlight-color: transparent;
+    }
+    #floatingImage:active { cursor: grabbing; }
+  </style>
 </head>
 <body>
-    <div class="content">
-
-        <img src="image_content/glitz.png" alt="Glitz_Img" width="400"> 
-        <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/XBL7PLx86z0?si=-D5sx6ihekBGZmQ_&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        -->
+  <div class="content">
+    <img src="image_content/glitz.png" alt="Glitz_Img" width="400">
     <h1>Hello World 🌎🌍🌏</h1>
     <p>This is my new website!</p>
-
-    <p class="bottom-one">
-        Here are some links to different music and writing I do and put out on the web:
-    </p>
-
+    <p class="bottom-one">Here are some links to different music and writing I do and put out on the web:</p>
     <ul>
-        <li class="bottom-one">
-            <a href="https://soundcloud.com/christian-stenbro" target="_blank">Listen to my new mixtape 'Goodnight, Butterfly' on SoundCloud</a>
-        </li>
-        <li class="bottom-one">
-            <a href="https://youtube.com/@aarhus-miracles?si=j5_uNI1b-gkwg6Lm" target="_blank">... or check out the associated music video on YouTube! </a>
-        </li>
-        <li class="bottom-one">
-            <a href="https://christiancds.substack.com/" target="_blank">Read my cultural criticism blog, mostly dealing with popular music</a>
-        </li>
-        <li class="bottom-one">
-            <a href="https://christianstenbro.bandcamp.com/album/snowcrashed" target="_blank">Listen to 'Snowcrashed' released on Don't Look Back Records</a>
-        </li>
-        <li class="bottom-one">
-            <a href="https://osfortwo.bandcamp.com/" target="_blank">Find more releases on the OS Bandcamp site (a small internet label run by myself and Noemi)</a>
-        </li>
+      <li class="bottom-one"><a href="https://soundcloud.com/christian-stenbro" target="_blank">Listen to my new mixtape 'Goodnight, Butterfly' on SoundCloud</a></li>
+      <li class="bottom-one"><a href="https://youtube.com/@aarhus-miracles?si=j5_uNI1b-gkwg6Lm" target="_blank">... or check out the associated music video on YouTube! </a></li>
+      <li class="bottom-one"><a href="https://christiancds.substack.com/" target="_blank">Read my cultural criticism blog, mostly dealing with popular music</a></li>
+      <li class="bottom-one"><a href="https://christianstenbro.bandcamp.com/album/snowcrashed" target="_blank">Listen to 'Snowcrashed' released on Don't Look Back Records</a></li>
+      <li class="bottom-one"><a href="https://osfortwo.bandcamp.com/" target="_blank">Find more releases on the OS Bandcamp site (a small internet label run by myself and Noemi)</a></li>
     </ul>
-        
-    <p class="bottom_one">
-    </p> <!--
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/XBL7PLx86z0?si=-D5sx6ihekBGZmQ_&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    -->
-    </div>
+  </div>
 
-    <!-- Footer -->
-    <footer>
-        <p><a href="mailto:christian.stenbro@gmail.com">christian.stenbro@gmail.com</a></p>
-        <p><a href="https://www.instagram.com/christian_stenbro/" target="_blank">instagram page</a></p>
-    </footer>
-    
+  <!-- floating draggable image -->
+  <img src="image_content/butterfly_mac.png" id="floatingImage" alt="Floating">
+
+  <footer>
+    <p><a href="mailto:christian.stenbro@gmail.com">christian.stenbro@gmail.com</a></p>
+    <p><a href="https://www.instagram.com/christian_stenbro/" target="_blank">instagram page</a></p>
+  </footer>
+
+  <script>
+    (function () {
+      const el = document.getElementById('floatingImage');
+
+      // initial position in pixels (will be applied via transform)
+      let pos = { x: 50, y: 50 };
+
+      // values used while dragging
+      let dragging = false;
+      let pointerStart = { x: 0, y: 0 };
+      let elStart = { x: 0, y: 0 };
+
+      // for rAF batching
+      let lastPointer = { x: 0, y: 0 };
+      let rafPending = false;
+
+      // apply initial transform
+      el.style.transform = `translate3d(${pos.x}px, ${pos.y}px, 0)`;
+
+      // prevent native image drag ghost
+      el.addEventListener('dragstart', (e) => e.preventDefault());
+
+      el.addEventListener('pointerdown', (e) => {
+        // only left button for mouse
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+        e.preventDefault();
+        el.setPointerCapture(e.pointerId);   // ensures we keep getting pointermove
+        dragging = true;
+        pointerStart.x = e.clientX;
+        pointerStart.y = e.clientY;
+        elStart.x = pos.x;
+        elStart.y = pos.y;
+        el.style.cursor = 'grabbing';
+      });
+
+      // global pointermove so dragging still works if pointer leaves the element
+      window.addEventListener('pointermove', (e) => {
+        if (!dragging) return;
+        lastPointer.x = e.clientX;
+        lastPointer.y = e.clientY;
+        if (!rafPending) {
+          rafPending = true;
+          requestAnimationFrame(updatePosition);
+        }
+      });
+
+      window.addEventListener('pointerup', (e) => {
+        if (!dragging) return;
+        dragging = false;
+        el.style.cursor = 'grab';
+        try { el.releasePointerCapture(e.pointerId); } catch (_) {}
+      });
+
+      function updatePosition() {
+        rafPending = false;
+        const dx = lastPointer.x - pointerStart.x;
+        const dy = lastPointer.y - pointerStart.y;
+
+        // new position candidate
+        let newX = elStart.x + dx;
+        let newY = elStart.y + dy;
+
+        // clamp so the image stays on-screen
+        const rect = el.getBoundingClientRect();
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        const w = rect.width;
+        const h = rect.height;
+
+        newX = Math.min(Math.max(0, newX), Math.max(0, vw - w));
+        newY = Math.min(Math.max(0, newY), Math.max(0, vh - h));
+
+        pos.x = newX;
+        pos.y = newY;
+
+        // GPU-accelerated move
+        el.style.transform = `translate3d(${newX}px, ${newY}px, 0)`;
+      }
+
+      // keep position valid if the window resizes
+      window.addEventListener('resize', () => {
+        const rect = el.getBoundingClientRect();
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        pos.x = Math.min(pos.x, Math.max(0, vw - rect.width));
+        pos.y = Math.min(pos.y, Math.max(0, vh - rect.height));
+        el.style.transform = `translate3d(${pos.x}px, ${pos.y}px, 0)`;
+      });
+    })();
+  </script>
 </body>
-    
 </html>

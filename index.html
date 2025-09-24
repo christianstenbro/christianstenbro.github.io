@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Christian Stenbro Music</title>
   <style>
-    body { background-color: whitesmoke; margin: 0; }
+    body { background-color: ghostwhite; margin: 0; }
     .content { margin-left: 40px; }
     h1 { color: rgb(0, 0, 0); font-weight: bold; }
     .bottom-one { padding-bottom: 0.5cm; }
@@ -18,7 +18,7 @@
       font-size: 12px;
     }
     footer p { display: inline; margin-right: 15px; }
-    footer a { color: black; text-decoration: none; }
+    footer a { color: grey; text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
     /* ---- floating draggable image (improved) ---- */
@@ -41,7 +41,7 @@
             padding: 10px; 
             position: absolute;
             top: 50px;
-            left: 50px;
+            left: 460px;
             background: white;
             cursor: move;
         }
@@ -64,7 +64,7 @@
 </head>
 <body>
   <div class="content">
-    <img src="image_content/press_img.jpg" alt="clone_hero" width="400">
+    <img id="randomImage" src="image_content/press_img.jpg" alt="random_sequence_image" width="400">
     <h1>Hello World 🌎🌍🌏</h1>
     <p>This is my new website!</p>
     <p class="bottom-one">Here are some links to different music and writing I do and put out on the web:</p>
@@ -145,6 +145,25 @@
         };
         
         document.onmouseup = () => drag = false;
+    </script>
+
+    <!-- Script to randomly select image from image_sequence folder -->
+    <script>
+        // Function to randomly select an image from image_sequence folder
+        function setRandomImage() {
+            // There are 41 images numbered 1.jpg through 41.jpg
+            const randomNumber = Math.floor(Math.random() * 41) + 1;
+            const imagePath = `image_sequence/${randomNumber}.jpg`;
+            
+            const imageElement = document.getElementById('randomImage');
+            imageElement.src = imagePath;
+            imageElement.alt = `sequence_image_${randomNumber}`;
+        }
+        
+        // Set random image when page loads
+        window.onload = function() {
+            setRandomImage();
+        };
     </script>
   
   <!-- floating draggable image; commented out temporarily -->

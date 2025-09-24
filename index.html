@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Christian Stenbro Music</title>
   <style>
-    body { background-color: ghostwhite; margin: 0; }
+    body { 
+      background-color: ghostwhite; 
+      margin: 0; 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
     .content { margin-left: 40px; }
     h1 { color: rgb(0, 0, 0); font-weight: bold; }
     .bottom-one { padding-bottom: 0.5cm; }
@@ -44,12 +48,6 @@
             left: 460px;
             background: white;
             cursor: move;
-        }
-        #trackTitle {
-            font-weight: bold;
-            font-size: 14px;
-            margin-bottom: 5px;
-            text-align: center;
         }
         #trackSelector {
             width: 100%;
@@ -90,7 +88,6 @@
 
 <!-- adding floating music player -->
     <div class="player">
-        <div id="trackTitle">beautiful_fragrance.mp3</div>
         <select id="trackSelector" onchange="changeTrack()">
             <option value="audio_content/beautiful_fragrance.mp3">beautiful_fragrance.mp3</option>
             <option value="audio_content/icouldbetheone_risset_mix.mp3">icouldbetheone_risset_mix.mp3</option>
@@ -112,11 +109,9 @@
         const a = document.getElementById('audio');
         const bar = document.getElementById('bar');
         const time = document.getElementById('time');
-        const trackTitle = document.getElementById('trackTitle');
         
         let playing = false;
         
-        a.onloadeddata = () => trackTitle.textContent = a.src.split('/').pop();
         a.ontimeupdate = () => {
             if (a.duration) {
                 bar.style.width = (a.currentTime / a.duration * 100) + '%';

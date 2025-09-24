@@ -70,8 +70,7 @@
 <body>
     <div class="content">
     <img id="randomImage" src="" alt="random_sequence_image" width="400" style="visibility: hidden;">
-    <h2>Hello World 🩵</h2>
-    <p>This is my new website!</p>
+    <p><strong>Hello World!</strong> This is my new website.</p>
     <p class="bottom-one">Here are some links to different music and writing I do and put out on the web:</p>
     <ul>
       <li class="bottom-one"><a href="https://soundcloud.com/christian-stenbro" target="_blank">Listen to my new mixtape 'Goodnight, Butterfly' on SoundCloud</a></li>
@@ -171,8 +170,8 @@
     <script>
         // Function to randomly select an image from image_sequence folder
         function setRandomImage() {
-            // There are 47 images numbered 1.jpg through 47.jpg
-            const randomNumber = Math.floor(Math.random() * 47) + 1;
+            // There are 44 images numbered 1.jpg through 44.jpg
+            const randomNumber = Math.floor(Math.random() * 44) + 1;
             const imagePath = `image_sequence/${randomNumber}.jpg`;
             
             const imageElement = document.getElementById('randomImage');

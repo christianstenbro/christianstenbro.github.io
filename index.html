@@ -69,7 +69,7 @@
 </head>
 <body>
     <div class="content">
-    <img id="randomImage" src="" alt="random_sequence_image" width="400" style="visibility: hidden;">
+    <img id="randomImage" src="" alt="random_sequence_image" width="350" style="visibility: hidden;">
     <h1>Hello World</h1>
     <p>This is my new website!</p>
     <p class="bottom-one">Here are some links to different music and writing I do and put out on the web:</p>
@@ -171,8 +171,8 @@
     <script>
         // Function to randomly select an image from image_sequence folder
         function setRandomImage() {
-            // There are 41 images numbered 1.jpg through 41.jpg
-            const randomNumber = Math.floor(Math.random() * 41) + 1;
+            // There are 41 images numbered 1.jpg through 51.jpg
+            const randomNumber = Math.floor(Math.random() * 51) + 1;
             const imagePath = `image_sequence/${randomNumber}.jpg`;
             
             const imageElement = document.getElementById('randomImage');

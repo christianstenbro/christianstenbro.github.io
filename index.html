@@ -45,6 +45,17 @@
             background: white;
             cursor: move;
         }
+        #trackTitle {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        #trackSelector {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 3px;
+        }
         button { margin-right: 5px; }
         #progress { 
             width: 200px; 
@@ -79,8 +90,12 @@
 
 <!-- adding floating music player -->
     <div class="player">
-        <div id="file">no file</div>
-        <br>
+        <div id="trackTitle">beautiful_fragrance.mp3</div>
+        <select id="trackSelector" onchange="changeTrack()">
+            <option value="audio_content/beautiful_fragrance.mp3">beautiful_fragrance.mp3</option>
+            <option value="audio_content/icouldbetheone_risset_mix.mp3">icouldbetheone_risset_mix.mp3</option>
+        </select>
+        <br><br>
         <button onclick="play()">play</button>
         <button onclick="stop()">stop</button>
         <div id="progress" onclick="seek(event)">
@@ -97,11 +112,11 @@
         const a = document.getElementById('audio');
         const bar = document.getElementById('bar');
         const time = document.getElementById('time');
-        const file = document.getElementById('file');
+        const trackTitle = document.getElementById('trackTitle');
         
         let playing = false;
         
-        a.onloadeddata = () => file.textContent = a.src.split('/').pop();
+        a.onloadeddata = () => trackTitle.textContent = a.src.split('/').pop();
         a.ontimeupdate = () => {
             if (a.duration) {
                 bar.style.width = (a.currentTime / a.duration * 100) + '%';
@@ -109,6 +124,20 @@
                     String(Math.floor(a.currentTime%60)).padStart(2,'0');
             }
         };
+        
+        function changeTrack() {
+            const selector = document.getElementById('trackSelector');
+            const selectedFile = selector.value;
+            
+            // Stop current playback
+            a.pause();
+            playing = false;
+            a.currentTime = 0;
+            
+            // Load new track
+            a.src = selectedFile;
+            a.load();
+        }
         
         function play() {
             if (playing) { a.pause(); } else { a.play(); }

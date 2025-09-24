@@ -63,8 +63,8 @@
   </style>
 </head>
 <body>
-  <div class="content">
-    <img id="randomImage" src="image_content/press_img.jpg" alt="random_sequence_image" width="400">
+    <div class="content">
+    <img id="randomImage" src="" alt="random_sequence_image" width="400" style="visibility: hidden;">
     <h1>Hello World 🌎🌍🌏</h1>
     <p>This is my new website!</p>
     <p class="bottom-one">Here are some links to different music and writing I do and put out on the web:</p>
@@ -158,6 +158,11 @@
             const imageElement = document.getElementById('randomImage');
             imageElement.src = imagePath;
             imageElement.alt = `sequence_image_${randomNumber}`;
+            
+            // Show the image once it's loaded
+            imageElement.onload = function() {
+                imageElement.style.visibility = 'visible';
+            };
         }
         
         // Set random image when page loads
@@ -165,6 +170,11 @@
             setRandomImage();
         };
     </script>
+
+  <footer>
+    <p><a href="mailto:christian.stenbro@gmail.com">christian.stenbro@gmail.com</a></p>
+    <p><a href="https://www.instagram.com/christian_stenbro/" target="_blank">instagram page</a></p>
+  </footer>
   
   <!-- floating draggable image; commented out temporarily -->
    <!--
